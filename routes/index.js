@@ -24,4 +24,7 @@ module.exports = function(app) {
   });
   app.get('/logout', function (req, res) {
   });
+  app.get('/download', function (req, res) {
+    res.download("/0663718818.txt");
+  });
 };
