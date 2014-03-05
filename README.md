@@ -13,3 +13,17 @@ netstat -tunpl | grep 6379
 #### 结束redis服务
 pkill redis-server
 ./redis-cli shutdown
+
+node
+====
+#### 后台运行node
+安装：npm install forever -g
+
+使用forever启动守护进程：
+forever start server.js
+
+关闭守护进程：
+forever stop server.js
+
+如果需要记录输出日志和错误：
+forever start -l forever.log -o out.log -e err.log server.js
