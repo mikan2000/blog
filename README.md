@@ -27,3 +27,9 @@ forever stop server.js
 
 如果需要记录输出日志和错误：
 forever start -l forever.log -o out.log -e err.log server.js
+
+linux
+====
+#### centos释放内存缓存文件
+#sync
+#echo 3 > /proc/sys/vm/drop_caches
