@@ -1,4 +1,4 @@
-blog
+redis
 ====
 #### redis 后台启动
 maemonize yes
