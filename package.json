@@ -3,10 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "./node_modules/mocha/bin/mocha -R spec"
   },
   "dependencies": {
+    "debug": "0.7.x",
     "express": "3.4.8",
-    "ejs": "*"
+    "ejs": "*",
+    "webot": "0.1.7",
+    "wechat-mp": "~0.1.4"
   }
 }

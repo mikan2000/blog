@@ -9,6 +9,7 @@ var routes = require('./routes');
 // var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var webot = require('weixin-robot');
 
 var app = express();
 
@@ -35,6 +36,21 @@ if ('development' == app.get('env')) {
 
 // 新添加
 routes(app);
+
+// 指定回复消息
+webot.set('hi', '你好');
+
+webot.set('subscribe', {
+  pattern: function(info) {
+    return info.is('event') && info.param.event === 'subscribe';
+  },
+  handler: function(info) {
+    return '欢迎订阅啦啦啦啦啦';
+  }
+});
+
+// 接管消息请求
+webot.watch(app, { token: 'poppy', path: '/wechat' });
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
