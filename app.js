@@ -14,7 +14,7 @@ var webot = require('weixin-robot');
 var app = express();
 // 指定回复消息
 webot.set('hi', '嘿嘿嘿嘿');
-
+webot.set('晚安', '晚安啦~');
 webot.set('subscribe', {
   pattern: function(info) {
     return info.is('event') && info.param.event === 'subscribe';
