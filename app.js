@@ -32,7 +32,7 @@ webot.set('test', {
 });
 webot.set('shorturl', {
   pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
-  handler: function(info) {
+  handler: function(info, next) {
     var msg = "fanhui";
     googleapis
     .discover('urlshortener', 'v1')
@@ -42,11 +42,11 @@ webot.set('shorturl', {
           .execute(function(err, result) {
             if (err) {
               msg = err;
-              return msg;
+              return next();
             } else {
               console.log('Result: ', result.id);
               msg = result.id;
-              return msg;
+              return next(null, msg);
             }
           });
     });
