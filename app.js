@@ -40,7 +40,7 @@ webot.set('shorturl', {
         if (err) {
           return err;
         } else {
-          console.log('Result: ', result);
+          console.log('Result: ', result.id);
           return result;
         }
       };
