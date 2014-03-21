@@ -24,6 +24,12 @@ webot.set('subscribe', {
   }
 });
 
+webot.set('shorturl', {
+  pattern: /^((httphttps))([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$/i,
+  handler: function(info) {
+    return '你好，' + info.param[1];
+  }
+});
 // 接管消息请求
 webot.watch(app, { token: 'poppy', path: '/wechat' });
 
