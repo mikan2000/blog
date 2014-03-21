@@ -30,7 +30,7 @@ webot.set('test', {
     return info.text;
   }
 });
-function urlapi() {
+function urlapi(longurl) {
   googleapis
     .discover('urlshortener', 'v1')
     .execute(function(err, client) {
@@ -43,14 +43,14 @@ function urlapi() {
         }
       };
       client.urlshortener.url
-          .insert({ longUrl: info.text })
+          .insert({ longUrl: longurl })
           .execute(printResult);
     });
 }
 webot.set('shorturl', {
   pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
   handler: function(info) {
-    var msg = urlapi();
+    var msg = urlapi(info.text);
     return msg;
   }
 });
