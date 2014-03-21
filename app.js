@@ -37,23 +37,19 @@ webot.set('shorturl', {
     googleapis
     .discover('urlshortener', 'v1')
     .execute(function(err, client) {
-      var printResult = function(err, result) {
-        if (err) {
-          msg = err;
-        } else {
-          console.log('Result: ', result.id);
-          msg = result.id;
-        }
-      };
       client.urlshortener.url
           .insert({ longUrl: info.text })
-          .execute(printResult);
+          .execute(function(err, result) {
+            if (err) {
+              msg = err;
+              return msg;
+            } else {
+              console.log('Result: ', result.id);
+              msg = result.id;
+              return msg;
+            }
+          });
     });
-    console.log(msg);
-    setTimeout(function() {
-        return msg;
-    }, 0);
-    
   }
 });
 
