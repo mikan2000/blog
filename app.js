@@ -33,15 +33,18 @@ webot.set('test', {
 webot.set('shorturl', {
   pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
   handler: function(info) {
+    console.log("1111111111111");
     googleapis
     .discover('urlshortener', 'v1')
     .execute(function(err, client) {
       var printResult = function(err, result) {
         if (err) {
+          console.log("2222222222222");
           return err;
         } else {
+          console.log("333333333333333333");
           console.log('Result: ', result.id);
-          return result;
+          return result.id;
         }
       };
       client.urlshortener.url
