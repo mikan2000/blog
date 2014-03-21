@@ -28,15 +28,10 @@ webot.set('subscribe', {
 webot.set('shorturl', {
   pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
   handler: function(info) {
-    return '你好，heiheiheihei';
-  }
-});
-webot.set('test', {
-  pattern: 'test',
-  handler: function(info) {
     return info.reply;
   }
 });
+
 // 接管消息请求
 webot.watch(app, { token: 'poppy', path: '/wechat' });
 
