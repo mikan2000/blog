@@ -24,11 +24,16 @@ webot.set('subscribe', {
     return '欢迎订阅啦啦啦啦啦';
   }
 });
-
+webot.set('test', {
+  pattern: 'test',
+  handler: function(info) {
+    return info.text;
+  }
+});
 webot.set('shorturl', {
   pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
   handler: function(info) {
-    return info.reply;
+    return '你好，heiheiheihei';
   }
 });
 
