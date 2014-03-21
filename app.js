@@ -25,9 +25,9 @@ webot.set('subscribe', {
 });
 
 webot.set('shorturl', {
-  pattern: /^((httphttps))([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$/i,
+  pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
   handler: function(info) {
-    return '你好，' + info.param[1];
+    return '你好，heiheiheihei';
   }
 });
 // 接管消息请求
