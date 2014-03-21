@@ -30,8 +30,11 @@ webot.set('test', {
     return info.text;
   }
 });
-function urlapi(longurl) {
-  googleapis
+webot.set('shorturl', {
+  pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
+  handler: function(info) {
+    var msg = "fanhui";
+    msg = googleapis
     .discover('urlshortener', 'v1')
     .execute(function(err, client) {
       var printResult = function(err, result) {
@@ -43,15 +46,9 @@ function urlapi(longurl) {
         }
       };
       client.urlshortener.url
-          .insert({ longUrl: longurl })
+          .insert({ longUrl: info.text })
           .execute(printResult);
     });
-}
-webot.set('shorturl', {
-  pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
-  handler: function(info) {
-    var msg = urlapi(info.text);
-    console.log("==="+msg);
     return msg;
   }
 });
