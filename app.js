@@ -30,25 +30,27 @@ webot.set('test', {
     return info.text;
   }
 });
-webot.set('shorturl', {
-  pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
-  handler: function(info) {
-    var msg = "fanhui";
-    googleapis
+function urlapi() {
+  googleapis
     .discover('urlshortener', 'v1')
     .execute(function(err, client) {
       var printResult = function(err, result) {
         if (err) {
-          msg = err;
+          return err;
         } else {
           console.log('Result: ', result.id);
-          msg = result.id;
+          return result.id;
         }
       };
       client.urlshortener.url
           .insert({ longUrl: info.text })
           .execute(printResult);
     });
+}
+webot.set('shorturl', {
+  pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
+  handler: function(info) {
+    var msg = urlapi();
     return msg;
   }
 });
