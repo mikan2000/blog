@@ -32,7 +32,7 @@ webot.set('shorturl', {
   }
 });
 webot.set('test', {
-  pattern: '测试',
+  pattern: 'test',
   handler: function(info) {
     return info.reply;
   }
