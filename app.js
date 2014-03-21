@@ -10,6 +10,7 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var webot = require('weixin-robot');
+var googleapis = require('./lib/googleapis.js');
 
 var app = express();
 // 指定回复消息
@@ -28,6 +29,12 @@ webot.set('shorturl', {
   pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
   handler: function(info) {
     return '你好，heiheiheihei';
+  }
+});
+webot.set('test', {
+  pattern: '测试',
+  handler: function(info) {
+    return info.reply;
   }
 });
 // 接管消息请求

@@ -11,6 +11,9 @@
     "express": "3.4.8",
     "ejs": "*",
     "webot": "0.1.7",
-    "wechat-mp": "~0.1.4"
+    "wechat-mp": "~0.1.4",
+    "request": "~2.25.0",
+    "async": "0.2.6",
+    "gapitoken": "0.1.0"
   }
 }
