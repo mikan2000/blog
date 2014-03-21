@@ -34,22 +34,26 @@ webot.set('shorturl', {
   pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
   handler: function(info) {
     var msg = "fanhui";
-    msg = googleapis
+    googleapis
     .discover('urlshortener', 'v1')
     .execute(function(err, client) {
       var printResult = function(err, result) {
         if (err) {
-          return err;
+          msg = err;
         } else {
           console.log('Result: ', result.id);
-          return result.id;
+          msg = result.id;
         }
       };
       client.urlshortener.url
           .insert({ longUrl: info.text })
           .execute(printResult);
     });
-    return msg;
+    console.log(msg);
+    setTimeout(function() {
+        return msg;
+    }, 0);
+    
   }
 });
 
