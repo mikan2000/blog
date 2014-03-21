@@ -51,6 +51,7 @@ webot.set('shorturl', {
   pattern: '^((http|https)://)?([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9]).)+[a-zA-Z]{2,6}$',
   handler: function(info) {
     var msg = urlapi(info.text);
+    console.log("==="+msg);
     return msg;
   }
 });
