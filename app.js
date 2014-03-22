@@ -23,7 +23,7 @@ webot.set('subscribe', {
   }
 });
 webot.set('shorturl', {
-  pattern: '^((http|https)://)?[\S]+\.[\S]+$',
+  pattern: '^((http|https)://)?[\\\S]+\\\.[\\\S]+$',
   handler: function(info, next) {
     var msg = "fanhui";
     googleapis
