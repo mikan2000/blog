@@ -14,20 +14,12 @@ var googleapis = require('./lib/googleapis.js');
 
 var app = express();
 // 指定回复消息
-webot.set('hi', '嘿嘿嘿嘿');
-webot.set('晚安', '晚安啦~');
 webot.set('subscribe', {
   pattern: function(info) {
     return info.is('event') && info.param.event === 'subscribe';
   },
   handler: function(info) {
-    return '欢迎订阅啦啦啦啦啦';
-  }
-});
-webot.set('test', {
-  pattern: 'test',
-  handler: function(info) {
-    return info.text;
+    return '欢迎订阅短网址小助手，发送一个长网址给我，会返回一个短网址哦~';
   }
 });
 webot.set('shorturl', {
