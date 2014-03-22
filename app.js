@@ -19,7 +19,7 @@ webot.set('subscribe', {
     return info.is('event') && info.param.event === 'subscribe';
   },
   handler: function(info) {
-    return '欢迎订阅短网址小助手，发送一个长网址给我，会返回一个短网址哦~';
+    return '欢迎订阅短网址小助手，发送一个长网址给我，会返回一个短网址哦~如果是淘宝网址，请将返回的短网址复制到浏览器中打开。';
   }
 });
 webot.set('shorturl', {
